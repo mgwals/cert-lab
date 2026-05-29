@@ -45,6 +45,13 @@ By default the app writes progress to `data/cert_lab.sqlite3`. Override it with:
 CERT_LAB_DATABASE_URL=sqlite:///./data/cert_lab.sqlite3
 ```
 
+The study content is loaded from `content/es/certifications.yml` (falling back to
+the packaged copy). Override the content file with:
+
+```bash
+CERT_LAB_CONTENT_PATH=./content/es/certifications.yml
+```
+
 ## License
 
 MIT

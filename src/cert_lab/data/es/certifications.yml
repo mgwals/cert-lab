@@ -1,0 +1,689 @@
+certifications:
+  - slug: github-foundations
+    title: GitHub Foundations
+    short_title: GitHub
+    priority: Prioridad 1
+    official_url: https://docs.github.com/en/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications
+    description: Fundamentos de colaboración, repositorios, Git, issues, pull requests y automatización básica en GitHub.
+    domains:
+      - slug: git-basics
+        title: Git y control de versiones
+        summary: Entender commits, ramas, historial y sincronización con remotos.
+        objectives:
+          - Diferenciar commit, branch, tag y remote.
+          - Practicar cambios pequeños con mensajes claros.
+          - Resolver el flujo básico de pull, merge y push.
+      - slug: repositories
+        title: Repositorios y colaboración
+        summary: Usar issues, pull requests y revisiones para coordinar trabajo.
+        objectives:
+          - Abrir issues accionables con criterios de aceptación.
+          - Describir el ciclo de una pull request.
+          - Interpretar permisos, visibilidad y archivos clave del repo.
+      - slug: github-products
+        title: Productos de GitHub
+        summary: Reconocer Actions, Pages, Codespaces, Discussions, Packages y herramientas de seguridad.
+        objectives:
+          - Ubicar cada producto en un flujo real de desarrollo.
+          - Identificar cuándo usar automatización o entornos cloud.
+          - Entender señales básicas de seguridad del repositorio.
+      - slug: workflow-security
+        title: Workflow y seguridad básica
+        summary: Mantener un flujo fiable sin exponer secretos ni romper CI.
+        objectives:
+          - Leer estados de checks y entender protecciones de rama.
+          - Mantener secretos fuera del código versionado.
+          - Usar revisiones como control de calidad.
+    questions:
+      - id: gh-q01
+        domain: git-basics
+        prompt: Qué representa mejor un commit en Git?
+        options:
+          - id: A
+            text: Una copia completa de todo GitHub en tu equipo.
+            correct: false
+          - id: B
+            text: Un punto del historial con cambios, autor, fecha y mensaje.
+            correct: true
+          - id: C
+            text: Un permiso para publicar una rama protegida.
+            correct: false
+          - id: D
+            text: Una conversación dentro de una pull request.
+            correct: false
+        explanation: Un commit captura un cambio concreto en el historial del repositorio.
+      - id: gh-q02
+        domain: git-basics
+        prompt: Para qué sirve una rama en un flujo de trabajo normal?
+        options:
+          - id: A
+            text: Para aislar cambios antes de integrarlos en la línea principal.
+            correct: true
+          - id: B
+            text: Para borrar el historial anterior del proyecto.
+            correct: false
+          - id: C
+            text: Para convertir un repositorio privado en público.
+            correct: false
+          - id: D
+            text: Para almacenar secretos de producción.
+            correct: false
+        explanation: Las ramas permiten trabajar sin mezclar cambios incompletos con la rama principal.
+      - id: gh-q03
+        domain: repositories
+        prompt: Qué información hace que un issue sea más accionable?
+        options:
+          - id: A
+            text: Solo una etiqueta genérica como bug.
+            correct: false
+          - id: B
+            text: Una descripción del objetivo, contexto, alcance y validación esperada.
+            correct: true
+          - id: C
+            text: Una lista de tecnologías sin resultado esperado.
+            correct: false
+          - id: D
+            text: Una captura sin texto ni pasos.
+            correct: false
+        explanation: Un issue útil reduce ambigüedad y permite validar cuándo el trabajo está terminado.
+      - id: gh-q04
+        domain: repositories
+        prompt: Qué ocurre normalmente en una pull request?
+        options:
+          - id: A
+            text: Se propone un cambio, se revisa, se ejecutan checks y se integra si procede.
+            correct: true
+          - id: B
+            text: Se reemplaza automáticamente todo el repositorio remoto.
+            correct: false
+          - id: C
+            text: Se publican secretos para que CI pueda leerlos.
+            correct: false
+          - id: D
+            text: Se elimina la necesidad de tests.
+            correct: false
+        explanation: La PR es el punto de revisión, conversación y validación antes del merge.
+      - id: gh-q05
+        domain: github-products
+        prompt: Qué producto encaja mejor para ejecutar tests al hacer push?
+        options:
+          - id: A
+            text: GitHub Actions.
+            correct: true
+          - id: B
+            text: GitHub Sponsors.
+            correct: false
+          - id: C
+            text: GitHub Discussions.
+            correct: false
+          - id: D
+            text: GitHub Stars.
+            correct: false
+        explanation: GitHub Actions automatiza workflows como lint, tests, builds y despliegues.
+      - id: gh-q06
+        domain: github-products
+        prompt: Cuándo tendría sentido GitHub Pages?
+        options:
+          - id: A
+            text: Para alojar documentación o una web estática desde un repositorio.
+            correct: true
+          - id: B
+            text: Para cifrar una base de datos de producción.
+            correct: false
+          - id: C
+            text: Para sustituir todos los entornos de desarrollo.
+            correct: false
+          - id: D
+            text: Para impedir cualquier colaboración externa.
+            correct: false
+        explanation: Pages está orientado a publicar sitios estáticos, documentación o páginas de proyecto.
+      - id: gh-q07
+        domain: workflow-security
+        prompt: Qué práctica reduce el riesgo de exponer credenciales?
+        options:
+          - id: A
+            text: Guardarlas como texto claro en README.
+            correct: false
+          - id: B
+            text: Versionarlas en una rama privada.
+            correct: false
+          - id: C
+            text: Usar secrets del repositorio u organización y no imprimirlos en logs.
+            correct: true
+          - id: D
+            text: Pegarlas en cada issue para que CI las encuentre.
+            correct: false
+        explanation: Los secretos deben gestionarse fuera del código y con cuidado en los logs.
+      - id: gh-q08
+        domain: workflow-security
+        prompt: Qué indica un check rojo en una pull request?
+        options:
+          - id: A
+            text: Que hay al menos una validación fallida que debe revisarse antes de integrar.
+            correct: true
+          - id: B
+            text: Que GitHub ha aprobado el cambio automáticamente.
+            correct: false
+          - id: C
+            text: Que el repositorio ya no existe.
+            correct: false
+          - id: D
+            text: Que la rama se ha protegido con éxito y no hay nada que mirar.
+            correct: false
+        explanation: Los checks fallidos son una señal para inspeccionar logs y corregir o justificar.
+      - id: gh-q09
+        domain: repositories
+        prompt: Qué archivo suele explicar cómo instalar, ejecutar o entender un proyecto?
+        options:
+          - id: A
+            text: README.md.
+            correct: true
+          - id: B
+            text: .git/HEAD.
+            correct: false
+          - id: C
+            text: Un binario aleatorio.
+            correct: false
+          - id: D
+            text: Solo el historial local de commits.
+            correct: false
+        explanation: README.md es el punto de entrada habitual para humanos que llegan al repositorio.
+      - id: gh-q10
+        domain: git-basics
+        prompt: Qué hace git pull en un caso simple?
+        options:
+          - id: A
+            text: Trae cambios del remoto y los integra en la rama local.
+            correct: true
+          - id: B
+            text: Crea una organización nueva.
+            correct: false
+          - id: C
+            text: Elimina todos los tags.
+            correct: false
+          - id: D
+            text: Convierte issues en commits.
+            correct: false
+        explanation: En el flujo básico, pull combina fetch e integración en la rama activa.
+    labs:
+      - id: gh-lab-01
+        domain: repositories
+        title: Issue accionable
+        goal: Crear un issue de mejora pequeño con objetivo, alcance y validación.
+        tasks:
+          - Escribe el problema en una frase.
+          - Añade criterios de aceptación verificables.
+          - Añade una etiqueta de tipo o prioridad.
+      - id: gh-lab-02
+        domain: git-basics
+        title: Rama de práctica
+        goal: Practicar una rama corta con un cambio reversible.
+        tasks:
+          - Crea una rama local.
+          - Haz un cambio mínimo en documentación.
+          - Abre una PR y verifica que CI se ejecuta.
+      - id: gh-lab-03
+        domain: workflow-security
+        title: Revisión de secretos
+        goal: Comprobar que el repo no publica credenciales ni datos sensibles.
+        tasks:
+          - Busca patrones de tokens o claves en archivos versionados.
+          - Revisa .gitignore y variables documentadas.
+          - Confirma que los logs de CI no imprimen secretos.
+
+  - slug: az-900
+    title: Microsoft Azure Fundamentals AZ-900
+    short_title: AZ-900
+    priority: Prioridad 2
+    official_url: https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/
+    description: Conceptos cloud, arquitectura de Azure, servicios principales, gestión, gobierno y seguridad básica.
+    domains:
+      - slug: cloud-concepts
+        title: Conceptos cloud
+        summary: Entender modelos de servicio, modelos de despliegue, CapEx, OpEx y responsabilidad compartida.
+        objectives:
+          - Diferenciar IaaS, PaaS y SaaS.
+          - Explicar nube pública, privada e híbrida.
+          - Relacionar elasticidad, disponibilidad y escalabilidad.
+      - slug: azure-architecture-services
+        title: Arquitectura y servicios
+        summary: Identificar regiones, availability zones, compute, storage, networking e identidad.
+        objectives:
+          - Describir componentes físicos y lógicos de Azure.
+          - Elegir servicios básicos para compute, red y almacenamiento.
+          - Entender el papel de Microsoft Entra ID.
+      - slug: management-governance
+        title: Gestión y gobierno
+        summary: Aplicar costes, políticas, monitorización, RBAC y herramientas de administración.
+        objectives:
+          - Reconocer Azure Policy, RBAC, Monitor y Cost Management.
+          - Entender grupos de recursos y suscripciones.
+          - Aplicar etiquetas y controles básicos de gobierno.
+    questions:
+      - id: az-q01
+        domain: cloud-concepts
+        prompt: Qué describe mejor IaaS?
+        options:
+          - id: A
+            text: Aplicaciones completas listas para usar por navegador.
+            correct: false
+          - id: B
+            text: Infraestructura virtual como máquinas, redes y discos gestionados por el cliente.
+            correct: true
+          - id: C
+            text: Un modelo donde no existe responsabilidad compartida.
+            correct: false
+          - id: D
+            text: Un contrato de soporte sin recursos técnicos.
+            correct: false
+        explanation: IaaS ofrece infraestructura base; el cliente gestiona más capas que en PaaS o SaaS.
+      - id: az-q02
+        domain: cloud-concepts
+        prompt: Qué ventaja se asocia a OpEx en cloud?
+        options:
+          - id: A
+            text: Pagar recursos como gasto operativo según uso.
+            correct: true
+          - id: B
+            text: Comprar siempre hardware por adelantado.
+            correct: false
+          - id: C
+            text: Evitar cualquier medición de costes.
+            correct: false
+          - id: D
+            text: Bloquear la elasticidad del servicio.
+            correct: false
+        explanation: Cloud suele mover parte del coste a gasto operativo variable.
+      - id: az-q03
+        domain: cloud-concepts
+        prompt: En responsabilidad compartida, qué suele gestionar Microsoft en Azure?
+        options:
+          - id: A
+            text: La seguridad física de los centros de datos.
+            correct: true
+          - id: B
+            text: Todas las contraseñas de usuarios del cliente.
+            correct: false
+          - id: C
+            text: El código de cualquier aplicación del cliente.
+            correct: false
+          - id: D
+            text: Las decisiones de clasificación de datos del negocio.
+            correct: false
+        explanation: El proveedor cubre la infraestructura física; el cliente conserva responsabilidades propias.
+      - id: az-q04
+        domain: azure-architecture-services
+        prompt: Para qué sirven las availability zones?
+        options:
+          - id: A
+            text: Para aislar cargas entre ubicaciones físicas separadas dentro de una región.
+            correct: true
+          - id: B
+            text: Para convertir una VM en un SaaS.
+            correct: false
+          - id: C
+            text: Para eliminar la necesidad de backups.
+            correct: false
+          - id: D
+            text: Para cambiar automáticamente de proveedor cloud.
+            correct: false
+        explanation: Las zonas ayudan a diseñar tolerancia a fallos dentro de una región compatible.
+      - id: az-q05
+        domain: azure-architecture-services
+        prompt: Qué servicio se asocia a identidad y acceso en Azure?
+        options:
+          - id: A
+            text: Microsoft Entra ID.
+            correct: true
+          - id: B
+            text: Azure Blob Storage.
+            correct: false
+          - id: C
+            text: Azure Queue Storage.
+            correct: false
+          - id: D
+            text: Azure DNS privado únicamente.
+            correct: false
+        explanation: Microsoft Entra ID gestiona identidades, autenticación y escenarios de acceso.
+      - id: az-q06
+        domain: azure-architecture-services
+        prompt: Qué servicio encaja mejor para almacenar objetos no estructurados?
+        options:
+          - id: A
+            text: Azure Blob Storage.
+            correct: true
+          - id: B
+            text: Azure Virtual Network.
+            correct: false
+          - id: C
+            text: Azure Policy.
+            correct: false
+          - id: D
+            text: Azure Advisor.
+            correct: false
+        explanation: Blob Storage está orientado a objetos como imágenes, documentos, backups y logs.
+      - id: az-q07
+        domain: management-governance
+        prompt: Qué permite Azure RBAC?
+        options:
+          - id: A
+            text: Asignar permisos a identidades sobre ámbitos como recursos o suscripciones.
+            correct: true
+          - id: B
+            text: Comprimir máquinas virtuales apagadas.
+            correct: false
+          - id: C
+            text: Cambiar el precio de Azure globalmente.
+            correct: false
+          - id: D
+            text: Evitar el uso de cuentas.
+            correct: false
+        explanation: RBAC aplica control de acceso basado en roles y ámbito.
+      - id: az-q08
+        domain: management-governance
+        prompt: Qué uso tiene Azure Policy?
+        options:
+          - id: A
+            text: Evaluar y aplicar reglas de cumplimiento sobre recursos.
+            correct: true
+          - id: B
+            text: Escribir código Python automáticamente.
+            correct: false
+          - id: C
+            text: Hospedar una página estática sin cuenta.
+            correct: false
+          - id: D
+            text: Sustituir todas las copias de seguridad.
+            correct: false
+        explanation: Azure Policy ayuda a mantener recursos alineados con reglas de gobierno.
+      - id: az-q09
+        domain: management-governance
+        prompt: Para qué sirven las etiquetas en recursos de Azure?
+        options:
+          - id: A
+            text: Para añadir metadatos como centro de coste, entorno o propietario.
+            correct: true
+          - id: B
+            text: Para cifrar la contraseña del usuario raíz.
+            correct: false
+          - id: C
+            text: Para crear regiones nuevas.
+            correct: false
+          - id: D
+            text: Para reemplazar todas las políticas.
+            correct: false
+        explanation: Las etiquetas facilitan organización, costes, informes y gobierno.
+      - id: az-q10
+        domain: cloud-concepts
+        prompt: Qué significa elasticidad en cloud?
+        options:
+          - id: A
+            text: Ajustar recursos hacia arriba o abajo según demanda.
+            correct: true
+          - id: B
+            text: Usar siempre un único servidor fijo.
+            correct: false
+          - id: C
+            text: Bloquear el acceso a internet.
+            correct: false
+          - id: D
+            text: Evitar cualquier automatización.
+            correct: false
+        explanation: Elasticidad es la capacidad de adaptar capacidad a la carga real.
+    labs:
+      - id: az-lab-01
+        domain: cloud-concepts
+        title: Clasificar modelos cloud
+        goal: Mapear ejemplos cotidianos a IaaS, PaaS y SaaS.
+        tasks:
+          - Lista tres servicios que uses.
+          - Clasifica cada uno como IaaS, PaaS o SaaS.
+          - Escribe qué responsabilidades conserva el cliente.
+      - id: az-lab-02
+        domain: azure-architecture-services
+        title: Diseño mínimo de una app web
+        goal: Bocetar compute, storage, red e identidad para una app pequeña.
+        tasks:
+          - Elige un servicio de compute para la app.
+          - Añade almacenamiento para archivos.
+          - Define cómo se autenticarían usuarios internos.
+      - id: az-lab-03
+        domain: management-governance
+        title: Gobierno básico
+        goal: Definir una convención pequeña de etiquetas y permisos.
+        tasks:
+          - Propón etiquetas para entorno, propietario y coste.
+          - Define un rol mínimo para lectura.
+          - Añade una regla de política sencilla.
+
+  - slug: pcep
+    title: PCEP Certified Entry-Level Python Programmer
+    short_title: PCEP
+    priority: Prioridad 3
+    official_url: https://pythoninstitute.org/pcep
+    description: Fundamentos de Python, tipos, control de flujo, funciones, colecciones, excepciones y módulos básicos.
+    domains:
+      - slug: python-basics
+        title: Sintaxis, tipos y operadores
+        summary: Manejar literales, variables, operadores, entrada/salida y conversiones.
+        objectives:
+          - Diferenciar tipos básicos y conversiones explícitas.
+          - Leer expresiones con precedencia.
+          - Usar print, input y operaciones aritméticas simples.
+      - slug: control-flow
+        title: Control de flujo
+        summary: Escribir condiciones y bucles previsibles.
+        objectives:
+          - Aplicar if, elif y else.
+          - Elegir for o while según el caso.
+          - Entender break, continue y rangos.
+      - slug: collections-functions
+        title: Colecciones y funciones
+        summary: Trabajar con listas, tuplas, diccionarios, strings y funciones.
+        objectives:
+          - Manipular colecciones sin perder mutabilidad de vista.
+          - Definir funciones con parámetros y retorno.
+          - Entender alcance local básico.
+      - slug: errors-modules
+        title: Errores y módulos
+        summary: Capturar errores simples e importar funcionalidad estándar.
+        objectives:
+          - Usar try y except cuando hay una recuperación clara.
+          - Reconocer errores comunes de tiempo de ejecución.
+          - Importar módulos de la biblioteca estándar.
+    questions:
+      - id: py-q01
+        domain: python-basics
+        prompt: Qué valor produce int("7") + 3?
+        options:
+          - id: A
+            text: "10"
+            correct: true
+          - id: B
+            text: "73"
+            correct: false
+          - id: C
+            text: Error, porque int no acepta strings numéricos.
+            correct: false
+          - id: D
+            text: "7 + 3"
+            correct: false
+        explanation: int("7") convierte el texto a entero y después se suma 3.
+      - id: py-q02
+        domain: python-basics
+        prompt: Qué operador devuelve el resto de una división?
+        options:
+          - id: A
+            text: "%"
+            correct: true
+          - id: B
+            text: "//"
+            correct: false
+          - id: C
+            text: "**"
+            correct: false
+          - id: D
+            text: "=="
+            correct: false
+        explanation: El operador módulo (%) devuelve el resto de la división.
+      - id: py-q03
+        domain: control-flow
+        prompt: Qué bloque se ejecuta si una condición if es falsa y existe else?
+        options:
+          - id: A
+            text: El bloque else.
+            correct: true
+          - id: B
+            text: Siempre el bloque if.
+            correct: false
+          - id: C
+            text: Ninguno, Python detiene el programa.
+            correct: false
+          - id: D
+            text: El último import.
+            correct: false
+        explanation: else cubre el caso en el que la condición previa no se cumple.
+      - id: py-q04
+        domain: control-flow
+        prompt: Qué hace break dentro de un bucle?
+        options:
+          - id: A
+            text: Sale del bucle actual.
+            correct: true
+          - id: B
+            text: Reinicia Python.
+            correct: false
+          - id: C
+            text: Convierte una lista en tupla.
+            correct: false
+          - id: D
+            text: Ignora solo la iteración actual y sigue siempre.
+            correct: false
+        explanation: break termina el bucle más cercano; continue salta a la siguiente iteración.
+      - id: py-q05
+        domain: collections-functions
+        prompt: Qué estructura es mutable?
+        options:
+          - id: A
+            text: list.
+            correct: true
+          - id: B
+            text: tuple.
+            correct: false
+          - id: C
+            text: str.
+            correct: false
+          - id: D
+            text: int.
+            correct: false
+        explanation: Las listas pueden modificarse después de crearse; tuplas y strings no.
+      - id: py-q06
+        domain: collections-functions
+        prompt: Qué devuelve len(["a", "b", "c"])?
+        options:
+          - id: A
+            text: "3"
+            correct: true
+          - id: B
+            text: "2"
+            correct: false
+          - id: C
+            text: "abc"
+            correct: false
+          - id: D
+            text: Error siempre.
+            correct: false
+        explanation: len devuelve el número de elementos de una colección.
+      - id: py-q07
+        domain: collections-functions
+        prompt: Qué palabra clave devuelve un valor desde una función?
+        options:
+          - id: A
+            text: return.
+            correct: true
+          - id: B
+            text: yield from import.
+            correct: false
+          - id: C
+            text: except.
+            correct: false
+          - id: D
+            text: global siempre.
+            correct: false
+        explanation: return finaliza la función y entrega un valor al llamador.
+      - id: py-q08
+        domain: errors-modules
+        prompt: Qué bloque captura un error específico en Python?
+        options:
+          - id: A
+            text: except.
+            correct: true
+          - id: B
+            text: define.
+            correct: false
+          - id: C
+            text: switch.
+            correct: false
+          - id: D
+            text: package.
+            correct: false
+        explanation: except se usa con try para manejar excepciones concretas.
+      - id: py-q09
+        domain: errors-modules
+        prompt: Qué hace import math?
+        options:
+          - id: A
+            text: Permite usar funciones y constantes del módulo math.
+            correct: true
+          - id: B
+            text: Instala Python desde internet.
+            correct: false
+          - id: C
+            text: Convierte todo número en string.
+            correct: false
+          - id: D
+            text: Desactiva los errores aritméticos.
+            correct: false
+        explanation: import carga un módulo para acceder a sus nombres con el prefijo correspondiente.
+      - id: py-q10
+        domain: control-flow
+        prompt: Qué secuencia produce range(3)?
+        options:
+          - id: A
+            text: 0, 1, 2.
+            correct: true
+          - id: B
+            text: 1, 2, 3.
+            correct: false
+          - id: C
+            text: 3, 2, 1.
+            correct: false
+          - id: D
+            text: Solo 3.
+            correct: false
+        explanation: range(3) empieza en 0 por defecto y termina antes de 3.
+    labs:
+      - id: py-lab-01
+        domain: python-basics
+        title: Conversor pequeño
+        goal: Crear un script que convierta minutos a horas y minutos restantes.
+        tasks:
+          - Lee un número entero desde input.
+          - Usa división entera y módulo.
+          - Imprime una frase clara con el resultado.
+      - id: py-lab-02
+        domain: collections-functions
+        title: Función de resumen
+        goal: Escribir una función que reciba notas y devuelva media, mínimo y máximo.
+        tasks:
+          - Define una función con una lista como parámetro.
+          - Devuelve un diccionario con tres valores.
+          - Prueba la función con al menos dos listas.
+      - id: py-lab-03
+        domain: errors-modules
+        title: Entrada robusta
+        goal: Manejar una conversión a entero con recuperación sencilla.
+        tasks:
+          - Envuelve int(input(...)) en try y except.
+          - Muestra un mensaje útil cuando el valor no sea válido.
+          - Añade una prueba manual con texto no numérico.

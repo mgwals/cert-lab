@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Cert Lab - Panel{% endblock %}
+
+{% block content %}
+  <section class="page-head">
+    <div>
+      <p class="eyebrow">GitHub Foundations -> AZ-900 -> PCEP</p>
+      <h1>Panel de certificaciones</h1>
+      <p class="lead">Repaso activo con preguntas propias, labs prácticos y progreso local.</p>
+    </div>
+  </section>
+
+  <section class="cert-grid" aria-label="Certificaciones">
+    {% for certification in certifications %}
+      <article class="cert-card">
+        <div class="card-head">
+          <div>
+            <p class="eyebrow">{{ certification.priority }}</p>
+            <h2>{{ certification.title }}</h2>
+          </div>
+          <span class="score">{{ certification.progress.mastery }}%</span>
+        </div>
+        <p>{{ certification.description }}</p>
+        <div class="meter" aria-label="Progreso {{ certification.progress.mastery }}%">
+          <span style="width: {{ certification.progress.mastery }}%"></span>
+        </div>
+        <dl class="stats">
+          <div>
+            <dt>Preguntas</dt>
+            <dd>{{ certification.progress.correct_questions }}/{{ certification.progress.total_questions }}</dd>
+          </div>
+          <div>
+            <dt>Fallos</dt>
+            <dd>{{ certification.progress.failed_questions }}</dd>
+          </div>
+          <div>
+            <dt>Labs</dt>
+            <dd>{{ certification.progress.completed_labs }}/{{ certification.progress.total_labs }}</dd>
+          </div>
+        </dl>
+        <div class="actions">
+          <a class="button primary" href="/certifications/{{ certification.slug }}">Abrir mapa</a>
+          <a class="button" href="/quiz/{{ certification.slug }}">Test rápido</a>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock %}

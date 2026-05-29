@@ -1,0 +1,44 @@
+[project]
+name = "cert-lab"
+version = "0.1.0"
+description = "Spanish certification study lab for GitHub Foundations, AZ-900, and PCEP."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Manuel G. Wals" }]
+dependencies = [
+    "fastapi>=0.121.0",
+    "jinja2>=3.1.6",
+    "python-multipart>=0.0.20",
+    "pyyaml>=6.0.2",
+    "sqlmodel>=0.0.27",
+    "uvicorn[standard]>=0.38.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.0.0",
+    "ruff>=0.14.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cert_lab = ["templates/*.html", "static/*.css", "data/es/*.yml"]
+
+[build-system]
+requires = ["setuptools>=80.0.0", "wheel"]
+build-backend = "setuptools.build_meta"

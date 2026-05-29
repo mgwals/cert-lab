@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Resultado {{ certification.short_title }} - Cert Lab{% endblock %}
+
+{% block content %}
+  <section class="page-head">
+    <div>
+      <p class="eyebrow">{{ certification.short_title }}</p>
+      <h1>Resultado: {{ correct_count }}/{{ total_count }}</h1>
+      <p class="lead">El progreso se ha guardado en SQLite para priorizar el repaso.</p>
+    </div>
+    <div class="head-actions">
+      <a class="button primary" href="/quiz/{{ certification.slug }}?mode=failed">Repasar fallos</a>
+      <a class="button" href="/certifications/{{ certification.slug }}">Volver al mapa</a>
+    </div>
+  </section>
+
+  <section class="result-list">
+    {% for result in results %}
+      <article class="result-row {% if result.is_correct %}correct{% else %}wrong{% endif %}">
+        <div>
+          <p class="eyebrow">{% if result.is_correct %}Correcta{% else %}A revisar{% endif %}</p>
+          <h2>{{ result.question.prompt }}</h2>
+          <p>{{ result.question.explanation }}</p>
+        </div>
+        <dl class="stats compact">
+          <div>
+            <dt>Tu respuesta</dt>
+            <dd>{{ result.selected_option or "-" }} - {{ result.selected_text }}</dd>
+          </div>
+          <div>
+            <dt>Correcta</dt>
+            <dd>{{ result.correct_option }} - {{ result.correct_text }}</dd>
+          </div>
+        </dl>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}{{ certification.short_title }} - Cert Lab{% endblock %}
+
+{% block content %}
+  <section class="page-head">
+    <div>
+      <p class="eyebrow">{{ certification.priority }}</p>
+      <h1>{{ certification.title }}</h1>
+      <p class="lead">{{ certification.description }}</p>
+    </div>
+    <div class="head-actions">
+      <a class="button primary" href="/quiz/{{ certification.slug }}">Test de 10</a>
+      <a class="button" href="/quiz/{{ certification.slug }}?mode=failed">Repasar fallos</a>
+      <a class="button quiet" href="{{ certification.official_url }}">Objetivos oficiales</a>
+    </div>
+  </section>
+
+  <section class="summary-band" aria-label="Resumen de progreso">
+    <div>
+      <span class="score large">{{ progress.mastery }}%</span>
+      <p>Dominio estimado</p>
+    </div>
+    <div>
+      <strong>{{ progress.answered_questions }}</strong>
+      <p>preguntas intentadas</p>
+    </div>
+    <div>
+      <strong>{{ progress.failed_questions }}</strong>
+      <p>fallos activos</p>
+    </div>
+    <div>
+      <strong>{{ progress.completed_labs }}/{{ progress.total_labs }}</strong>
+      <p>labs completados</p>
+    </div>
+  </section>
+
+  <section class="domain-list">
+    <h2>Mapa por dominios</h2>
+    {% for domain in certification.domains %}
+      {% set stats = progress.domain_stats[domain.slug] %}
+      <article class="domain-row">
+        <div>
+          <h3>{{ domain.title }}</h3>
+          <p>{{ domain.summary }}</p>
+          <ul class="objective-list">
+            {% for objective in domain.objectives %}
+              <li>{{ objective }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <dl class="stats compact">
+          <div>
+            <dt>Correctas</dt>
+            <dd>{{ stats.correct_questions }}/{{ stats.questions }}</dd>
+          </div>
+          <div>
+            <dt>Fallos</dt>
+            <dd>{{ stats.failed_questions }}</dd>
+          </div>
+          <div>
+            <dt>Labs</dt>
+            <dd>{{ stats.completed_labs }}/{{ stats.labs }}</dd>
+          </div>
+        </dl>
+      </article>
+    {% endfor %}
+  </section>
+
+  <section class="lab-list">
+    <h2>Labs prácticos</h2>
+    {% for lab in certification.labs %}
+      <article class="lab-row">
+        <div>
+          <h3>{{ lab.title }}</h3>
+          <p>{{ lab.goal }}</p>
+          <ol>
+            {% for task in lab.tasks %}
+              <li>{{ task }}</li>
+            {% endfor %}
+          </ol>
+        </div>
+        <form method="post" action="/certifications/{{ certification.slug }}/labs/{{ lab.id }}/toggle">
+          <input type="hidden" name="completed" value="{% if lab.id in completed_labs %}false{% else %}true{% endif %}">
+          <button class="button {% if lab.id not in completed_labs %}primary{% endif %}" type="submit">
+            {% if lab.id in completed_labs %}Marcar pendiente{% else %}Completar lab{% endif %}
+          </button>
+        </form>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock %}

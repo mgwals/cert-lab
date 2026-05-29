@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Test {{ certification.short_title }} - Cert Lab{% endblock %}
+
+{% block content %}
+  <section class="page-head">
+    <div>
+      <p class="eyebrow">{{ certification.short_title }}</p>
+      <h1>{% if mode == "failed" %}Repaso de fallos{% else %}Test rápido{% endif %}</h1>
+      <p class="lead">Preguntas originales de práctica. No son preguntas reales de examen.</p>
+    </div>
+  </section>
+
+  {% if empty_failed_review %}
+    <section class="empty-state">
+      <h2>No hay fallos activos</h2>
+      <p>Haz un test general o vuelve al mapa para completar labs.</p>
+      <div class="actions">
+        <a class="button primary" href="/quiz/{{ certification.slug }}">Test general</a>
+        <a class="button" href="/certifications/{{ certification.slug }}">Volver al mapa</a>
+      </div>
+    </section>
+  {% else %}
+    <form class="quiz-form" method="post" action="/quiz/{{ certification.slug }}">
+      {% for question in questions %}
+        <fieldset class="question">
+          <legend>{{ loop.index }}. {{ question.prompt }}</legend>
+          <input type="hidden" name="question_id" value="{{ question.id }}">
+          <div class="options">
+            {% for option in question.options %}
+              <label>
+                <input required type="radio" name="answer_{{ question.id }}" value="{{ option.id }}">
+                <span>{{ option.text }}</span>
+              </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+      {% endfor %}
+      <div class="sticky-actions">
+        <a class="button" href="/certifications/{{ certification.slug }}">Cancelar</a>
+        <button class="button primary" type="submit">Corregir</button>
+      </div>
+    </form>
+  {% endif %}
+{% endblock %}

@@ -2,6 +2,8 @@
 
 - Visible UI and study content are in natural Spain Spanish.
 - Code, commits, issues, CI, tests, and technical documentation are in English.
+- README: English-first; a Spanish section may be added below.
+- Harness chat: English by default; Spanish only when explicitly asked in that turn.
 - Keep public content safe: no exam dumps, no real exam questions, no copied long-form
   official material, no personal data, and no secrets.
 - Official certification pages may be linked as objectives, but explanations,
